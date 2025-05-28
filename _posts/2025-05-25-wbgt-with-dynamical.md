@@ -5,15 +5,16 @@ date:   2025-05-26 12:00:00 -0500
 categories: jekyll update
 ---
 
-Ever since seeing the announcment for non-demo releases from [dynamical.org][dynamical-hp] a few months ago, I've been eager to experiment with the data. Dynamical's mission is to:
+Ever since seeing the announcement for non-demo releases from [dynamical.org][dynamical-hp] a few months ago, I've been eager to experiment with the data. Dynamical's mission is to:
 
 > advance humanity’s ability to access, understand, and act on accurate weather and climate data
 
 In practice, this means hosting open-source Zarr-formatted datasets with standardized structure to make weather data easier to work with. Go read more about the [project][dynamical-about]! 
 
-As someone who works extensively with climate data but hasn't dealt specifically with this type of operational forecast data, this was the perfect jumping in point. After a quick look through the variable list in the NOAA GEFS forecast, I decided that a Wet Bulb Globe Temperatures (WBGT) conversion would be a perfect experiment since all the vairables required by the "gold standard" Liljegren approximation were availble. WBGT is a heat stress metric that takes into account temperature, humidity, wind speed, and solar radiation to provide a more robust estimate of human heat stress compared to more common metrics like the heat index. 
+As someone who works extensively with climate data but hasn't dealt specifically with this type of operational forecast data, this was the perfect jumping in point. After a quick look through the variable list in the NOAA GEFS forecast, I decided that a Wet Bulb Globe Temperatures (WBGT) conversion would be a perfect experiment since all the vairables required by the "gold standard" Liljegren approximation were availble. WBGT is a heat stress metric that considers temperature, humidity, wind speed, and solar radiation to provide a more robust estimate of human heat stress compared to more common metrics like the heat index. 
 
-For this simple project, my goal was to grab data for a seven day forecast for Arkansas (my home state) from the GEFS data and estimate the WBGT values over time. To calculate WBGT, I used a python implementation of Liljegren's original C scripts by [Kong and Huber (2022)][konghuber], available on Github [here][pywbgt]. This repo also includes a helpful notebook with a worked CMIP6 example that I've modified here to work with the GEFS data hosted on dynamical. I've stripped the dask setup from the original tutorial, but a proper dask implementation would be desirable for scaling a larger subset of data. 
+For this simple project, my goal was to grab data for a seven-day forecast for Arkansas (my home state) from the GEFS data and estimate the WBGT values over time. To calculate WBGT, I used a python implementation of Liljegren's original C scripts by [Kong and Huber (2022)][konghuber], available on Github [here][pywbgt]. This repo also includes a helpful notebook with a worked CMIP6 example that I've modified here to work with the GEFS data hosted on dynamical. I've stripped the dask setup from the original tutorial, but a proper dask implementation would be desirable for scaling a larger subset of data. 
+
 
 {% highlight python %}
 iimport xarray as xr
