@@ -13,8 +13,7 @@ In practice, this means hosting open-source Zarr-formatted datasets with standar
 
 As someone who works extensively with climate data but hasn't dealt specifically with this type of operational forecast data, this was the perfect jumping in point. After a quick look through the variable list in the NOAA GEFS forecast, I decided that a Wet Bulb Globe Temperatures (WBGT) conversion would be a perfect experiment since all the vairables required by the "gold standard" Liljegren approximation were availble. WBGT is a heat stress metric that considers temperature, humidity, wind speed, and solar radiation to provide a more robust estimate of human heat stress compared to more common metrics like the heat index. 
 
-For this simple project, my goal was to grab data for a seven-day forecast for Arkansas (my home state) from the GEFS data and estimate the WBGT values over time. To calculate WBGT, I used a python implementation of Liljegren's original C scripts by [Kong and Huber (2022)][konghuber], available on Github [here][pywbgt]. This repo also includes a helpful notebook with a worked CMIP6 example that I've modified here to work with the GEFS data hosted on dynamical. I've stripped the dask setup from the original tutorial, but a proper dask implementation would be desirable for scaling a larger subset of data. 
-
+For this simple project, my goal was to grab data for a seven-day forecast for Arkansas (my home state) from the GEFS data and estimate the WBGT values over time. To calculate WBGT, I used a python implementation of Liljegren's original C scripts by [Kong and Huber (2022)][konghuber], available on Github [here][pywbgt]. This repo also includes a helpful notebook with a worked CMIP6 example that I've modified here to work with the GEFS data hosted on dynamical. I've stripped the dask setup from the original tutorial, but a proper dask implementation would be desirable for scaling a larger subset of data. My script is included below. 
 
 {% highlight python %}
 iimport xarray as xr
@@ -94,7 +93,7 @@ wbgt = xr.DataArray(wbgt_liljegren- 273.15,dims=subset.dims, coords=subset.coord
 
 Simple enough! This left me with a xarray data array that can be plotted or animated as desired. Huge kudos to the dynamical team, this is an awesome resource to be able to access so easily. 
 
-![Image]({{ site.url }}/assets/images/wbgt.png)
+![Image](/assets/images/wbgt.png)
 
 
 [dynamical-hp]: https://dynamical.org/
