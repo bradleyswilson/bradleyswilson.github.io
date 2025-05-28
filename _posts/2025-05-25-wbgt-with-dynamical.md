@@ -91,9 +91,10 @@ wbgt_liljegren = WBGT_Liljegren(
 wbgt = xr.DataArray(wbgt_liljegren- 273.15,dims=subset.dims, coords=subset.coords)
 {% endhighlight %}
 
-Simple enough! This left me with a xarray data array that can be plotted or animated as desired. Huge kudos to the dynamical team, this is an awesome resource to be able to access so easily. 
-
 ![Image](https://bradleyswilson.github.io/assets/images/wbgt.png)
+
+Simple enough! Huge kudos to the dynamical team, this is an awesome resource to be able to access so easily. 
+
 
 [dynamical-hp]: https://dynamical.org/
 [dynamical-about]: https://dynamical.org/about/
